@@ -1,34 +1,39 @@
-from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException
+from selenium.common.exceptions import (
+    NoSuchElementException,
+    ElementNotVisibleException,
+)
 
 
 class LoginPage(object):
 
-    PATH = '/hackathon.html'
+    PATH = "/hackathon.html"
 
     LOCATORS = {
-        'username': 'input#username',
-        'password': 'input#password',
-        'log_in_button': 'button#log-in',
-        'log_in_error': 'div.alert.alert-warning'
-        }
+        "username": "input#username",
+        "password": "input#password",
+        "log_in_button": "button#log-in",
+        "log_in_error": "div.alert.alert-warning",
+    }
 
-    VALIDATION_ELEMENTS = ['username', 'password', 'log_in_button']
+    VALIDATION_ELEMENTS = ["username", "password", "log_in_button"]
 
     def __init__(self, driver):
         self.driver = driver
 
     def get_element_user_name(self):
-        return self.driver.find_element_by_css_selector(self.LOCATORS['username'])
+        return self.driver.find_element_by_css_selector(self.LOCATORS["username"])
 
     def get_element_password(self):
-        return self.driver.find_element_by_css_selector(self.LOCATORS['password'])
+        return self.driver.find_element_by_css_selector(self.LOCATORS["password"])
 
     def get_element_log_in_button(self):
-        return self.driver.find_element_by_css_selector(self.LOCATORS['log_in_button'])
+        return self.driver.find_element_by_css_selector(self.LOCATORS["log_in_button"])
 
     def get_element_log_in_error(self):
         try:
-            return self.driver.find_element_by_css_selector(self.LOCATORS['log_in_error'])
+            return self.driver.find_element_by_css_selector(
+                self.LOCATORS["log_in_error"]
+            )
         except NoSuchElementException:
             return None
 
@@ -43,7 +48,7 @@ class LoginPage(object):
             validation_locators[element] = self.LOCATORS[element]
         success = True
         elements_not_found = []
-        elements_not_visible =[]
+        elements_not_visible = []
         for key in validation_locators:
             try:
                 element = self.driver.find_element_by_css_selector(self.LOCATORS[key])
