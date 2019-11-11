@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 python setup.py install
 URL=https://demo.applitools.com/hackathon.html python tests/test_traditional.py
 URL=https://demo.applitools.com/hackathonV2.html python tests/test_traditional.py

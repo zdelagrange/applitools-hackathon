@@ -6,5 +6,5 @@ setup(
     author="Zac Delagrange",
     author_email="zac.delagrange@gmail.com",
     packages=["page_objects", "tests"],
-    install_requires=["selenium", "eyes-selenium"],
+    install_requires=["selenium>=3,<4", "eyes-selenium", "chardet", "certifi", "idna"],
 )
