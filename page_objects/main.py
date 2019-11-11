@@ -9,6 +9,7 @@ class MainPage(object):
         "compare_expenses": "a#showExpensesChart",
         "flash_sale": 'div#flashSale>img[src$=".gif"]',
         "flash_sale_2": 'div#flashSale2>img[src$=".gif"]',
+        "show_data_for_next_year": "button#addDataset",
     }
 
     VALIDATION_ELEMENTS = ["content"]
@@ -35,6 +36,11 @@ class MainPage(object):
             self.LOCATORS["recent_transaction_rows"]
         )
 
+    def get_element_show_data_for_next_year(self):
+        return self.driver.find_element_by_css_selector(
+            self.LOCATORS["show_data_for_next_year"]
+        )
+
     def get_row_data(self):
         rows = []
         for row in self.get_elements_table_rows():
@@ -56,12 +62,6 @@ class MainPage(object):
         return rows
 
     def get_elements_amounts(self):
-        # table_rows = self.get_elements_table_rows()
-        # elements = []
-        # for row in table_rows:
-        #     elements += row.find_element_by_css_selector('td:nth-of-type(5)>span')
-        # return elements
-        self.driver.save_screenshot("./ss.png")
         return self.driver.find_elements_by_css_selector("td:nth-of-type(5)>span")
 
     def get_amounts_float(self):
