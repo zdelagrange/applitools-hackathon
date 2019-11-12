@@ -2,6 +2,7 @@ import os
 import unittest
 from test_case import BaseTestCase
 
+from applitools.common.config import BatchInfo
 from applitools.selenium import Eyes, Target
 from page_objects.main import MainPage
 
@@ -10,6 +11,9 @@ class TestLoginPageUIElements(BaseTestCase):
     def setUp(self):
         self.eyes = Eyes()
         self.eyes.api_key = os.environ.get("APPLITOOLS_API_KEY")
+        batch = BatchInfo("Hackathon")
+        batch.id_ = '666'
+        self.eyes.batch = batch
         super().setUp()
         self.eyes.open(
             self.driver,
